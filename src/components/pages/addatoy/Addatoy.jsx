@@ -30,6 +30,7 @@ const Addatoy = () => {
     { value: "horse", label: "horse" },
     { value: "dianoasur", label: "dianoasur" },
     { value: "dogs", label: "dogs" },
+    { value: "lion", label: "lion" },
     { value: "cats", label: "cats" },
     { value: "unicorn", label: "unicorn" },
     { value: "cow", label: "cow" },

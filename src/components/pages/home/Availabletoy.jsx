@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Hometoycard from "./Hometoycard";
 
 const Availabletoy = () => {
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState("cats");
   const [homeToys, setHomeToys] = useState();
   const handleTabClick = (name) => {
     setActive(name);
@@ -13,9 +13,14 @@ const Availabletoy = () => {
       .then((res) => res.json())
       .then((result) => {
         setHomeToys(result);
-        console.log(result);
+        // console.log(result);
       });
   }, []);
+
+  // const result = homeToys?.filter(
+  //   (toys) => toys.subCategory[0].value == active
+  // );
+  // console.log(result);
 
   return (
     <div className="my-10 text-center">
@@ -31,12 +36,12 @@ const Availabletoy = () => {
           Cats
         </div>
         <div
-          onClick={() => handleTabClick("lions")}
+          onClick={() => handleTabClick("lion")}
           className={`tab tab-bordered text-lg ${
-            active == "lions" ? "tab-active font-semibold" : " "
+            active == "lion" ? "tab-active font-semibold" : " "
           }`}
         >
-          Lions
+          Lion
         </div>
         <div
           onClick={() => handleTabClick("dianoasur")}
