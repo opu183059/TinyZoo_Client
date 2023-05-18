@@ -5,7 +5,7 @@ const Header = () => {
   const [navbar, setNavbar] = useState(false);
 
   return (
-    <nav className="w-full bg-slate-50 shadow">
+    <nav className="w-full bg-slate-50 z-50">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-2 md:py-5 md:block">
@@ -74,16 +74,13 @@ const Header = () => {
                 </NavLink>
               </li>
               <li className="">
-                <a href="javascript:void(0)">Blog</a>
-              </li>
-              <li className="">
                 <NavLink
                   className={({ isActive }) =>
                     isActive ? " text-indigo-700" : " "
                   }
-                  to="/login"
+                  to="/alltoy"
                 >
-                  Login
+                  All toy
                 </NavLink>
               </li>
               <li className="">
@@ -91,42 +88,62 @@ const Header = () => {
                   className={({ isActive }) =>
                     isActive ? " text-indigo-700" : " "
                   }
-                  to="/register"
+                  to="/mytoy"
                 >
-                  Register
+                  My toy
+                </NavLink>
+              </li>
+              <li className="">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? " text-indigo-700" : " "
+                  }
+                  to="/addatoy"
+                >
+                  Add a toy
+                </NavLink>
+              </li>
+              <li className="">
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? " text-indigo-700" : " "
+                  }
+                  to="/blog"
+                >
+                  Blog
                 </NavLink>
               </li>
             </ul>
 
             <div className="mt-3 space-y-2 lg:hidden md:inline-block">
-              <a
-                href="javascript:void(0)"
-                className="inline-block w-full px-4 py-2 text-center text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
+              <Link
+                to="/login"
+                className="inline-block w-full px-4 py-2 text-center text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-l"
               >
-                Sign in
-              </a>
-              <a
-                href="javascript:void(0)"
-                className="inline-block w-full px-4 py-2 text-center text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
+                Login
+              </Link>
+              <Link
+                to="/registr"
+                className="inline-block w-full px-4 py-2 text-center text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-l"
               >
                 Sign up
-              </a>
+              </Link>
             </div>
           </div>
         </div>
         <div className="hidden space-x-2 md:inline-block">
-          <a
-            href="javascript:void(0)"
-            className="px-4 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
+          <Link
+            to="/login"
+            className="px-4 py-2 text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-l"
           >
-            Sign in
-          </a>
-          <a
-            href="javascript:void(0)"
-            className="px-4 py-2 text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
+            Log in
+          </Link>
+          <Link
+            to="/register"
+            className="px-4 py-2 text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-l"
           >
             Sign up
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

@@ -1,41 +1,29 @@
 const Banner = () => {
   return (
-    <section className="dark:bg-gray-800 dark:text-gray-100">
-      <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
-        <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-          <h1 className="text-5xl font-bold leading-none sm:text-6xl">
-            TinyZoo
-          </h1>
-          <p className="mt-6 mb-8 text-lg sm:mb-12">
-            Dictum aliquam porta in condimentum ac integer turpis pulvinar, est
-            scelerisque ligula sem
-          </p>
-          <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              className="px-8 py-3 text-lg font-semibold rounded dark:bg-blue-400 dark:text-gray-900"
-            >
-              Suspendisse
-            </a>
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              className="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-100"
-            >
-              Malesuada
-            </a>
+    <div>
+      <div className="hero min-h-screen bg-[url('https://media.istockphoto.com/id/1096992806/photo/colorful-kids-toys-frame-on-wooden-background-top-view-flat-lay-copy-space-for-text.jpg?s=170667a&w=0&k=20&c=Sjg9sbhAp4wJ7O03ykwZyV2lVG309kwlDS5QYn7g6RQ=')] bg-cover bg-fixed">
+        <div className="hero-content flex-col lg:flex-row-reverse w-10/12 mx-auto">
+          <img
+            src="https://i.ibb.co/YhPm11D/banner.jpg"
+            className="rounded-lg shadow-2xl"
+          />
+          <div>
+            <h1 className="text-2xl  text-stone-400 font-akaya">welcome to</h1>
+            <h1 className="text-7xl text-indigo-900 font-akaya drop-shadow-[0_35px_35px_rgba(255, 255, 255)]">
+              TinyZoo
+            </h1>
+            <p className="py-6 text-stone-800">
+              Discover a world of adorable toy animals at our online store. From
+              cuddly cows to playful cats and majestic lions, we offer a wide
+              selection of high-quality companions. Let your imagination roam
+              with lifelike designs and detailed craftsmanship. Find your
+              perfect furry friend and experience the joy of imaginative play.
+              Start your journey with us today!
+            </p>
           </div>
         </div>
-        <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
-          <img
-            src="https://images.unsplash.com/photo-1632060203819-4a605c798db3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGxvdmUlMjBkb2xsfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-            alt=""
-            className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
-          />
-        </div>
       </div>
-    </section>
+    </div>
   );
 };
 

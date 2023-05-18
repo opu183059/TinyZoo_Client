@@ -1,1 +1,12 @@
-Logo: https://i.ibb.co/hghyqpM/TinyZoo3.png
+Logo:   https://i.ibb.co/hghyqpM/TinyZoo3.png
+Error:  https://i.ibb.co/QQpBLcq/HTML-Yeti-404-Page.gif
+Banner: https://i.ibb.co/YhPm11D/banner.jpg
+        https://i.ibb.co/CBYCctt/bannnnner3.png
+HBanner:https://i.ibb.co/MZzFjH0/baner.jpg
+Gallery:https://i.ibb.co/YkWyzJs/g1.jpg
+        https://i.ibb.co/rFcYQkq/g1-2.jpg
+        https://i.ibb.co/XXT034S/g2-1.jpg
+        https://i.ibb.co/crpwV9m/g4-1.jpg
+        https://i.ibb.co/SJf9bNb/g5-1.jpg
+        https://i.ibb.co/L63dqCw/g6-1.jpg
+        https://i.ibb.co/m9kHBxK/g7.jpg
