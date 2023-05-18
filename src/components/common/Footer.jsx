@@ -16,11 +16,9 @@ const Footer = () => {
                 TinyZoo
               </span>
             </a>
-            <div>
-              Discover a delightful collection of toy animals at{" "}
-              <span className="text-indigo-400">TinyZoo</span>. Find cuddly
-              companions and farmyard favorites, including cows, dogs, cats, and
-              more. Shop now and bring joy to playtime!
+            <div className="mt-3">
+              Find cuddly companions and farmyard favorites, including cows,
+              dogs, cats, and more. Shop now and bring joy to playtime!
             </div>
           </div>
           <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-3">
@@ -120,7 +118,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="py-6 text-sm text-center dark:text-gray-400">
-          © 2023 Company <a href="#">TinyZoo</a> All rights reserved.
+          © 2023 <a href="#">TinyZoo</a>, All rights reserved.
         </div>
       </footer>
     </div>
