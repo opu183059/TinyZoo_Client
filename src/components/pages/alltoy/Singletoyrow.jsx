@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/prop-types
 const Singletoyrow = ({ toy }) => {
   const { sellerName, Available, subCategory, toyname, Price } = toy || {};
   console.log(subCategory[0].value);
