@@ -13,18 +13,26 @@ const Addatoy = () => {
   } = useForm();
   const onSubmit = (data) => {
     data.subCategory = selectedOption;
+    fetch("http://localhost:5000/addToy", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
     console.log(data);
   };
 
   const options = [
-    { value: "JavaScript", label: "JavaScript" },
-    { value: "C++", label: "C++" },
-    { value: "HTML", label: "HTML" },
-    { value: "CSS", label: "CSS" },
-    { value: "React", label: "React" },
-    { value: "Node", label: "Node" },
-    { value: "MongoDB", label: "MongoDB" },
-    { value: "Redux", label: "Redux" },
+    { value: "teddy bear", label: "teddy bear" },
+    { value: "horse", label: "horse" },
+    { value: "dianoasur", label: "dianoasur" },
+    { value: "dogs", label: "dogs" },
+    { value: "cats", label: "cats" },
+    { value: "unicorn", label: "unicorn" },
+    { value: "cow", label: "cow" },
   ];
 
   return (
@@ -37,6 +45,7 @@ const Addatoy = () => {
           className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid"
         >
           <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
+            {errors.exampleRequired && <span>This field is required</span>}
             <div className="space-y-2 col-span-full lg:col-span-1">
               <p className="font-medium">Toy information</p>
               <p className="text-xs">
@@ -50,7 +59,7 @@ const Addatoy = () => {
                   Toy name
                 </label>
                 <input
-                  defaultValue="test"
+                  defaultValue="Cat"
                   {...register("toyname")}
                   id="toyname"
                   type="text"
@@ -75,6 +84,7 @@ const Addatoy = () => {
                   Seller Name
                 </label>
                 <input
+                  defaultValue="OPU"
                   {...register("sellerName")}
                   id="sellerName"
                   type="text"
@@ -87,6 +97,7 @@ const Addatoy = () => {
                   Seller Email
                 </label>
                 <input
+                  defaultValue="opu@gmail.com"
                   {...register("sellerEmail")}
                   id="sellerEmail"
                   type="email"
@@ -112,6 +123,7 @@ const Addatoy = () => {
                   Photo URL
                 </label>
                 <input
+                  defaultValue="https://www.shutterstock.com/image-photo/kitten-playing-feather-wand-small-260nw-1235997691.jpg"
                   {...register("photoURL")}
                   id="photoURL"
                   type="text"
@@ -125,6 +137,7 @@ const Addatoy = () => {
                   Price
                 </label>
                 <input
+                  defaultValue="120"
                   {...register("Price")}
                   id="Price"
                   type="text"
@@ -137,6 +150,7 @@ const Addatoy = () => {
                   Rating
                 </label>
                 <input
+                  defaultValue="4.5"
                   {...register("Rating")}
                   id="Rating"
                   type="text"
@@ -149,6 +163,7 @@ const Addatoy = () => {
                   Available
                 </label>
                 <input
+                  defaultValue="2000"
                   {...register("Available")}
                   id="Available"
                   type="text"
@@ -162,6 +177,7 @@ const Addatoy = () => {
                 </label>
                 {/* <textarea className="textarea" placeholder="Details"></textarea> */}
                 <textarea
+                  defaultValue="Toy mouse for cat"
                   {...register("description")}
                   id="description"
                   type="text"
