@@ -12,7 +12,9 @@ const Alltoy = () => {
         setToys(result);
         // console.log(result);
         if (result.length == 0) {
-          setNoDataMessage("No data found in this, try again");
+          setNoDataMessage("No data found, Please try again");
+        } else {
+          setNoDataMessage(" ");
         }
       });
   }, []);
@@ -23,7 +25,7 @@ const Alltoy = () => {
         setToys(data);
         // console.log(data);
         if (data.length == 0) {
-          setNoDataMessage("No data found in this, try again");
+          setNoDataMessage("No data found, Please try again");
         } else {
           setNoDataMessage(" ");
         }

@@ -3,11 +3,17 @@ import Mytoytablerow from "./Mytoytablerow";
 
 const Mytoy = () => {
   const [myToys, setmyToys] = useState();
+  const [noDataMessage, setNoDataMessage] = useState("");
   useEffect(() => {
     fetch("http://localhost:5000/mytoy/opu@gmail.com")
       .then((res) => res.json())
       .then((result) => {
         setmyToys(result);
+        if (result.length == 0) {
+          setNoDataMessage("No data found, Please try again");
+        } else {
+          setNoDataMessage(" ");
+        }
       });
   }, []);
 
@@ -32,6 +38,9 @@ const Mytoy = () => {
             ))}
           </tbody>
         </table>
+        <h1 className="text-red-700 text-center font-semibold text-lg mt-5">
+          {noDataMessage}
+        </h1>
       </div>
     </div>
   );
