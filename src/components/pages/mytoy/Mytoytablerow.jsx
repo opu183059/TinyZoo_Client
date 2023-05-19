@@ -11,7 +11,8 @@ const Mytoytablerow = ({ mytoy }) => {
         <td>{Price}</td>
         <td>{Available}</td>
         <td>
-          <button className="btn btn-ghost btn-xs">details</button>
+          <button className="btn btn-ghost btn-xs">Edit</button>
+          <button className="btn btn-ghost btn-xs">Delete</button>
         </td>
       </tr>
     </>

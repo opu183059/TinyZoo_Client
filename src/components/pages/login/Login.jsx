@@ -2,7 +2,7 @@ const Login = () => {
   return (
     <div>
       <div className="w-9/12 md:w-7/12 lg:w-6/12 mx-auto my-10">
-        <div className="w-full p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
+        <div className="w-full p-8 space-y-3 rounded-xl dark:bg-indigo-950 dark:text-gray-100">
           <h1 className="text-2xl font-bold text-center">Login</h1>
           <form
             noValidate=""
@@ -14,7 +14,7 @@ const Login = () => {
                 type="email"
                 name="email"
                 id="email"
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
               />
@@ -31,7 +31,7 @@ const Login = () => {
                   type="password"
                   name="floating_password"
                   id="floating_password"
-                  className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
                   required
                 />
@@ -89,7 +89,7 @@ const Login = () => {
             </button>
           </div>
           <p className="text-xs text-center sm:px-6 dark:text-gray-400">
-            Don't have an account?
+            Dont have an account?
             <a
               rel="noopener noreferrer"
               href="#"

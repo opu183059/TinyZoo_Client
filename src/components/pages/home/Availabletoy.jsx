@@ -37,6 +37,14 @@ const Availabletoy = () => {
 
       <div>
         <div
+          onClick={() => handleTabClick(" ")}
+          className={`tab tab-bordered text-lg ${
+            active == " " ? "tab-active font-semibold" : " "
+          }`}
+        >
+          All
+        </div>
+        <div
           onClick={() => handleTabClick("cats")}
           className={`tab tab-bordered text-lg ${
             active == "cats" ? "tab-active font-semibold" : " "
