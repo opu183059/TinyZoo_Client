@@ -8,7 +8,7 @@ const Singletoyrow = ({ toy }) => {
         <td></td>
         <td>{sellerName}</td>
         <td>{toyname}</td>
-        <td>{subCategory[0].value}</td>
+        <td>{subCategory?.[0]?.value}</td>
         <td>{Price} tk</td>
         <td>{Available}</td>
         <td>

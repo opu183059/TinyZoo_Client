@@ -1,10 +1,26 @@
+import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import CreatableSelect from "react-select/creatable";
 import Swal from "sweetalert2";
 
-const Addatoy = () => {
+const Updatetoy = () => {
+  const toys = useLoaderData();
+  const {
+    sellerName,
+    toyname,
+    sellerEmail,
+    Rating,
+    photoURL,
+    description,
+    Price,
+    Available,
+    _id,
+  } = toys || {};
+
+  // ----------------------------------
+
   const [selectedOption, setSelectedOption] = useState(null);
   const {
     register,
@@ -14,19 +30,19 @@ const Addatoy = () => {
   } = useForm();
   const onSubmit = (data) => {
     data.subCategory = selectedOption;
-    fetch("http://localhost:5000/addToy", {
-      method: "POST",
+    fetch(`http://localhost:5000/toyupdate/${_id}`, {
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-        if (result.insertedId) {
+        if (result.modifiedCount > 0) {
           Swal.fire({
             icon: "success",
             title: "Success",
-            text: "Data added successfully",
+            text: "Data Updated successfully",
           });
         }
       });
@@ -53,22 +69,18 @@ const Addatoy = () => {
           action=""
           className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid"
         >
-          <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
+          <fieldset className=" w-10/12 md:8/12 lg:7/12 mx-auto p-6 rounded-md shadow-sm dark:bg-gray-900">
             {errors.exampleRequired && <span>This field is required</span>}
-            <div className="space-y-2 col-span-full lg:col-span-1">
-              <p className="font-medium">Toy information</p>
-              <p className="text-xs">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Adipisci fuga autem eum!
-              </p>
-            </div>
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
+              <div className="col-span-full">
+                <h1>Update Toy: {toyname}</h1>
+              </div>
               <div className="col-span-full sm:col-span-3">
                 <label htmlFor="firstname" className="text-sm">
                   Toy name
                 </label>
                 <input
-                  defaultValue="Cat"
+                  defaultValue={toyname}
                   {...register("toyname")}
                   id="toyname"
                   type="text"
@@ -80,6 +92,9 @@ const Addatoy = () => {
                 <label htmlFor="subCatagory" className="text-sm">
                   Sub-Catagory
                 </label>
+                {/* <input {...register("exampleRequired", { required: true })} />
+
+                {errors.exampleRequired && <span>This field is required</span>} */}
                 <CreatableSelect
                   className="h-9 w-full dark:border-gray-700 dark:text-gray-900"
                   defaultValue={selectedOption}
@@ -94,7 +109,7 @@ const Addatoy = () => {
                   Seller Name
                 </label>
                 <input
-                  defaultValue="OPU"
+                  defaultValue={sellerName}
                   {...register("sellerName")}
                   id="sellerName"
                   type="text"
@@ -107,7 +122,7 @@ const Addatoy = () => {
                   Seller Email
                 </label>
                 <input
-                  defaultValue="opu@gmail.com"
+                  defaultValue={sellerEmail}
                   {...register("sellerEmail")}
                   id="sellerEmail"
                   type="email"
@@ -133,7 +148,7 @@ const Addatoy = () => {
                   Photo URL
                 </label>
                 <input
-                  defaultValue="https://www.shutterstock.com/image-photo/kitten-playing-feather-wand-small-260nw-1235997691.jpg"
+                  defaultValue={photoURL}
                   {...register("photoURL")}
                   id="photoURL"
                   type="text"
@@ -147,7 +162,7 @@ const Addatoy = () => {
                   Price
                 </label>
                 <input
-                  defaultValue="120"
+                  defaultValue={Price}
                   {...register("Price")}
                   id="Price"
                   type="text"
@@ -160,7 +175,7 @@ const Addatoy = () => {
                   Rating
                 </label>
                 <input
-                  defaultValue="4.5"
+                  defaultValue={Rating}
                   {...register("Rating")}
                   id="Rating"
                   type="text"
@@ -173,7 +188,7 @@ const Addatoy = () => {
                   Available
                 </label>
                 <input
-                  defaultValue="2000"
+                  defaultValue={Available}
                   {...register("Available")}
                   id="Available"
                   type="text"
@@ -187,7 +202,7 @@ const Addatoy = () => {
                 </label>
                 {/* <textarea className="textarea" placeholder="Details"></textarea> */}
                 <textarea
-                  defaultValue="Toy mouse for cat"
+                  defaultValue={description}
                   {...register("description")}
                   id="description"
                   type="text"
@@ -198,7 +213,7 @@ const Addatoy = () => {
             </div>
           </fieldset>
           <div className="w-full text-center">
-            <input type="submit" className="btn btn-primary" />
+            <input type="submit" className="btn btn-primary" value="update" />
           </div>
         </form>
       </section>
@@ -206,4 +221,4 @@ const Addatoy = () => {
   );
 };
 
-export default Addatoy;
+export default Updatetoy;

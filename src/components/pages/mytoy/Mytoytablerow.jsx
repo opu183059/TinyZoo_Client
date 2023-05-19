@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 // eslint-disable-next-line react/prop-types
@@ -37,12 +38,14 @@ const Mytoytablerow = ({ mytoy }) => {
         <td></td>
         <td>{sellerName}</td>
         <td>{toyname}</td>
-        <td>{subCategory[0].value}</td>
+        <td>{subCategory?.[0]?.value}</td>
         <td>{Price}</td>
         <td>{Available}</td>
         <td>
           <button className="btn btn-ghost btn-xs">View</button>
-          <button className="btn btn-ghost btn-xs">Edit</button>
+          <Link to={`updatetoy/${_id}`}>
+            <button className="btn btn-ghost btn-xs">Edit</button>
+          </Link>
           <button onClick={() => dlt(_id)} className="btn btn-ghost btn-xs">
             Delete
           </button>
