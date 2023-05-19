@@ -9,7 +9,7 @@ const Hometoycard = ({ hometoy }) => {
           <img
             src={photoURL}
             alt={toyname}
-            className="max-w-xs rounded-lg mt-5"
+            className="max-w-xs h-72 rounded-lg mt-5"
           />
         </figure>
         <div className="card-body">

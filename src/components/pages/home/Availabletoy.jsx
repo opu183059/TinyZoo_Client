@@ -2,20 +2,29 @@ import { useEffect, useState } from "react";
 import Hometoycard from "./Hometoycard";
 
 const Availabletoy = () => {
-  const [active, setActive] = useState("cats");
+  const [active, setActive] = useState(" ");
   const [homeToys, setHomeToys] = useState();
   const handleTabClick = (name) => {
     setActive(name);
   };
 
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/allToy")
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       setHomeToys(result);
+  //       // console.log(result);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    fetch("http://localhost:5000/allToy")
+    fetch(`http://localhost:5000/allToy/${active}`)
       .then((res) => res.json())
       .then((result) => {
         setHomeToys(result);
         // console.log(result);
       });
-  }, []);
+  }, [active]);
 
   // const result = homeToys?.filter(
   //   (toys) => toys.subCategory[0].value == active

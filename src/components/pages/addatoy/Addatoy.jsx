@@ -21,6 +21,9 @@ const Addatoy = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
+        if (result.insertedId) {
+          alert("Data inserted");
+        }
       });
     console.log(data);
   };

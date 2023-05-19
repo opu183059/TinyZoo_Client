@@ -1,7 +1,6 @@
 // eslint-disable-next-line react/prop-types
-const Singletoyrow = ({ toy }) => {
-  const { sellerName, Available, subCategory, toyname, Price } = toy || {};
-  // console.log(subCategory[0].value);
+const Mytoytablerow = ({ mytoy }) => {
+  const { sellerName, toyname, subCategory, Price, Available } = mytoy || {};
   return (
     <>
       <tr>
@@ -19,4 +18,4 @@ const Singletoyrow = ({ toy }) => {
   );
 };
 
-export default Singletoyrow;
+export default Mytoytablerow;
