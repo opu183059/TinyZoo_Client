@@ -42,7 +42,6 @@ const Mytoytablerow = ({ mytoy }) => {
         <td>{Price}</td>
         <td>{Available}</td>
         <td>
-          <button className="btn btn-ghost btn-xs">View</button>
           <Link to={`updatetoy/${_id}`}>
             <button className="btn btn-ghost btn-xs">Edit</button>
           </Link>

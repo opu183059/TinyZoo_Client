@@ -12,6 +12,7 @@ import Addatoy from "./components/pages/addatoy/Addatoy.jsx";
 import Mytoy from "./components/pages/mytoy/Mytoy.jsx";
 import Blog from "./components/pages/blog/Blog.jsx";
 import Updatetoy from "./components/pages/updatetoy/Updatetoy.jsx";
+import Viewtoy from "./components/pages/viewtoy/Viewtoy.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,12 @@ const router = createBrowserRouter([
       {
         path: "mytoy/updatetoy/:id",
         element: <Updatetoy></Updatetoy>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/toyupdate/${params.id}`),
+      },
+      {
+        path: "alltoy/toyDetails/:id",
+        element: <Viewtoy></Viewtoy>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/toyupdate/${params.id}`),
       },

@@ -68,7 +68,7 @@ const Addatoy = () => {
                   Toy name
                 </label>
                 <input
-                  defaultValue="Cat"
+                  required
                   {...register("toyname")}
                   id="toyname"
                   type="text"
@@ -94,7 +94,7 @@ const Addatoy = () => {
                   Seller Name
                 </label>
                 <input
-                  defaultValue="OPU"
+                  required
                   {...register("sellerName")}
                   id="sellerName"
                   type="text"
@@ -107,7 +107,7 @@ const Addatoy = () => {
                   Seller Email
                 </label>
                 <input
-                  defaultValue="opu@gmail.com"
+                  required
                   {...register("sellerEmail")}
                   id="sellerEmail"
                   type="email"
@@ -133,8 +133,7 @@ const Addatoy = () => {
                   Photo URL
                 </label>
                 <input
-                  defaultValue="https://www.shutterstock.com/image-photo/kitten-playing-feather-wand-small-260nw-1235997691.jpg"
-                  {...register("photoURL")}
+                  required
                   id="photoURL"
                   type="text"
                   placeholder=""
@@ -147,7 +146,7 @@ const Addatoy = () => {
                   Price
                 </label>
                 <input
-                  defaultValue="120"
+                  required
                   {...register("Price")}
                   id="Price"
                   type="text"
@@ -160,7 +159,7 @@ const Addatoy = () => {
                   Rating
                 </label>
                 <input
-                  defaultValue="4.5"
+                  required
                   {...register("Rating")}
                   id="Rating"
                   type="text"
@@ -173,7 +172,7 @@ const Addatoy = () => {
                   Available
                 </label>
                 <input
-                  defaultValue="2000"
+                  required
                   {...register("Available")}
                   id="Available"
                   type="text"
@@ -187,7 +186,7 @@ const Addatoy = () => {
                 </label>
                 {/* <textarea className="textarea" placeholder="Details"></textarea> */}
                 <textarea
-                  defaultValue="Toy mouse for cat"
+                  required
                   {...register("description")}
                   id="description"
                   type="text"
