@@ -43,7 +43,7 @@ const Alltoy = () => {
           />
           <button onClick={handleSearch}>Search</button>
         </div>
-        <table className="table table-compact w-full">
+        <table className="table table-compact w-full shadow-lg">
           <thead>
             <tr>
               <th></th>
