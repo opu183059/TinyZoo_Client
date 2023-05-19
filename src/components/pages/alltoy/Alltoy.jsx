@@ -4,12 +4,16 @@ import Singletoyrow from "./Singletoyrow";
 const Alltoy = () => {
   const [toys, setToys] = useState();
   const [search, setSearch] = useState();
+  const [noDataMessage, setNoDataMessage] = useState("");
   useEffect(() => {
     fetch("http://localhost:5000/allToy")
       .then((res) => res.json())
       .then((result) => {
         setToys(result);
         // console.log(result);
+        if (result.length == 0) {
+          setNoDataMessage("No data found in this, try again");
+        }
       });
   }, []);
   const handleSearch = () => {
@@ -17,8 +21,15 @@ const Alltoy = () => {
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
+        // console.log(data);
+        if (data.length == 0) {
+          setNoDataMessage("No data found in this, try again");
+        } else {
+          setNoDataMessage(" ");
+        }
       });
   };
+
   return (
     <div className="w-10/12 mx-auto my-10">
       <div className="overflow-x-auto">
@@ -48,6 +59,9 @@ const Alltoy = () => {
             ))}
           </tbody>
         </table>
+        <h1 className="text-red-700 text-center font-semibold text-lg mt-5">
+          {noDataMessage}
+        </h1>
       </div>
     </div>
   );
