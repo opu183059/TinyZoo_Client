@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 // eslint-disable-next-line react/prop-types
 const Hometoycard = ({ hometoy }) => {
-  const { photoURL, toyname, Price, Rating } = hometoy || {};
+  const { photoURL, toyname, Price, Rating, _id } = hometoy || {};
   //   console.log(photoURL, toyname, Price, Rating);
   return (
     <div>
@@ -17,7 +19,10 @@ const Hometoycard = ({ hometoy }) => {
           <p>{Price}</p>
           <p>{Rating}</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">View Details</button>
+            {/* <button className="btn btn-primary">View Details</button> */}
+            <Link to={`alltoy/toyDetails/${_id}`}>
+              <button className="btn btn-ghost btn-xs">details</button>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,13 +1,14 @@
 import { useContext, useState } from "react";
 import { Authcontext } from "../../../provider/Authprovider";
 import { getAuth, updateProfile } from "firebase/auth";
+import { Link } from "react-router-dom";
 
 const Register = () => {
-  const { registerUser, logOut } = useContext(Authcontext);
+  const { registerUser, logOut, user } = useContext(Authcontext);
 
   const [errormgs, setErrormgs] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  // const [havemgs, setHavemgs] = useState("Already have an account?");
+  const [havemgs, setHavemgs] = useState("Already have an account?");
   // console.log(createUser);
   const auth = getAuth();
 
@@ -47,7 +48,7 @@ const Register = () => {
         .then((result) => {
           const loggedUser = result.user;
           setSuccessMessage("Account created successfully goto Login");
-          // setHavemgs("Click here to");
+          setHavemgs("Click here to");
           updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photo,
@@ -159,19 +160,32 @@ const Register = () => {
               </div>
             </div>
             <button className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-blue-400">
-              Sign in
+              Register
             </button>
           </form>
-          <p className="text-xs text-center sm:px-6 dark:text-gray-400">
-            Dont have an account?
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              className="underline dark:text-gray-100"
-            >
-              Sign up
-            </a>
-          </p>
+          <div>
+            {user ? (
+              <p className="text-xs text-center sm:px-6 dark:text-gray-400">
+                {havemgs}{" "}
+                <Link
+                  to="/login"
+                  className=" text-sm font-semibold underline dark:text-gray-100"
+                >
+                  login
+                </Link>{" "}
+              </p>
+            ) : (
+              <p className="text-xs text-center sm:px-6 dark:text-gray-400">
+                {havemgs}{" "}
+                <Link
+                  to="/login"
+                  className=" text-sm font-semibold underline dark:text-gray-100"
+                >
+                  login
+                </Link>
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>
