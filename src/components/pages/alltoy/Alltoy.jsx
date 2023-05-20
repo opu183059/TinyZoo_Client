@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Singletoyrow from "./Singletoyrow";
 import { useNavigation } from "react-router-dom";
+import { Authcontext } from "../../../provider/Authprovider";
 
 const Alltoy = () => {
   const [toys, setToys] = useState();
   const [search, setSearch] = useState();
   const [noDataMessage, setNoDataMessage] = useState("");
+  const { loading } = useContext(Authcontext);
 
   const navigation = useNavigation();
-  console.log(navigation.state);
+  // console.log(navigation.state);
 
   useEffect(() => {
     fetch("https://tinyzoo-server.vercel.app/allToy")
@@ -66,6 +68,16 @@ const Alltoy = () => {
             ))}
           </tbody>
         </table>
+        {/* loading animation  */}
+        {loading ? (
+          <div className="flex justify-center items-center h-60">
+            <div className="w-10 h-10 border-b-8 border-r-4 rounded-full animate-spin dark:border-amber-700"></div>
+            <p className="font-bold text-xl text-amber-700 ms-2">Loading....</p>
+          </div>
+        ) : (
+          ""
+        )}
+        {/* loading animation  */}
         <h1 className="text-red-700 text-center font-semibold text-lg mt-5">
           {noDataMessage}
         </h1>

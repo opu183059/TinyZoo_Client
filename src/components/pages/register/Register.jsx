@@ -76,7 +76,7 @@ const Register = () => {
   return (
     <div>
       <div className="w-9/12 md:w-7/12 lg:w-6/12 mx-auto my-10">
-        <div className="w-full p-8 space-y-3 rounded-xl dark:bg-indigo-950 dark:text-gray-100">
+        <div className="md:w-10/12 mx-auto w-full p-8 space-y-3 rounded-xl dark:bg-indigo-950 dark:text-gray-100">
           <h1 className="text-2xl font-bold text-center">Registration</h1>
           <div className="errorMessage">
             <p className="text-red-500 text-center">{errormgs}</p>
@@ -153,11 +153,7 @@ const Register = () => {
                   Photo URL
                 </label>
               </div>
-              <div className="flex justify-end text-xs dark:text-gray-400">
-                <a rel="noopener noreferrer" href="#">
-                  Forgot Password?
-                </a>
-              </div>
+              <div className="flex justify-end text-xs dark:text-gray-400"></div>
             </div>
             <button className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-blue-400">
               Register

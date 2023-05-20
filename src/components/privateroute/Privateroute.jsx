@@ -8,7 +8,12 @@ const Privateroute = ({ children }) => {
   // console.log(location);
   const { user, loading } = useContext(Authcontext);
   if (loading) {
-    return <progress className="progress w-full"></progress>;
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="w-10 h-10 border-b-8 border-r-4 rounded-full animate-spin dark:border-amber-700"></div>
+        <p className="font-bold text-xl text-amber-700 ms-2">Loading....</p>
+      </div>
+    );
   }
   if (user) {
     return children;

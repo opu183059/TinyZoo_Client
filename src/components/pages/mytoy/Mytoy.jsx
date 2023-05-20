@@ -4,7 +4,7 @@ import { Authcontext } from "../../../provider/Authprovider";
 import { useNavigation } from "react-router-dom";
 
 const Mytoy = () => {
-  const { user } = useContext(Authcontext);
+  const { user, loading } = useContext(Authcontext);
   // console.log(user.email);
   const navigation = useNavigation();
   console.log(navigation.state);
@@ -25,19 +25,6 @@ const Mytoy = () => {
 
   return (
     <div className="w-10/12 mx-auto my-10">
-      {/* loading animation  */}
-      <div>
-        {navigation.state === "loading" ? (
-          <div className="flex justify-center items-center min-h-screen">
-            <div className="w-10 h-10 border-b-8 border-r-4 rounded-full animate-spin dark:border-amber-700"></div>
-            <p className="font-bold text-xl text-amber-700 ms-2">Loading....</p>
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
-      {/* loading animation  */}
-
       <div className="overflow-x-auto">
         <table className="table table-compact w-full">
           <thead>
@@ -57,6 +44,16 @@ const Mytoy = () => {
             ))}
           </tbody>
         </table>
+        {/* loading animation  */}
+        {loading ? (
+          <div className="flex justify-center items-center h-64">
+            <div className="w-10 h-10 border-b-8 border-r-4 rounded-full animate-spin dark:border-amber-700"></div>
+            <p className="font-bold text-xl text-amber-700 ms-2">Loading....</p>
+          </div>
+        ) : (
+          ""
+        )}
+        {/* loading animation  */}
         <h1 className="text-red-700 text-center font-semibold text-lg mt-5">
           {noDataMessage}
         </h1>
