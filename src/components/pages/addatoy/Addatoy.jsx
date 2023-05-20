@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import CreatableSelect from "react-select/creatable";
 import Swal from "sweetalert2";
+import { Authcontext } from "../../../provider/Authprovider";
 
 const Addatoy = () => {
+  const { user } = useContext(Authcontext);
   const [selectedOption, setSelectedOption] = useState(null);
   const {
     register,
@@ -14,14 +16,14 @@ const Addatoy = () => {
   } = useForm();
   const onSubmit = (data) => {
     data.subCategory = selectedOption;
-    fetch("http://localhost:5000/addToy", {
+    fetch("https://tinyzoo-server.vercel.app/addToy", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         if (result.insertedId) {
           Swal.fire({
             icon: "success",
@@ -30,7 +32,7 @@ const Addatoy = () => {
           });
         }
       });
-    console.log(data);
+    // console.log(data);
   };
 
   const options = [
@@ -95,6 +97,7 @@ const Addatoy = () => {
                 </label>
                 <input
                   required
+                  defaultValue={user?.displayName}
                   {...register("sellerName")}
                   id="sellerName"
                   type="text"
@@ -108,6 +111,7 @@ const Addatoy = () => {
                 </label>
                 <input
                   required
+                  defaultValue={user?.email}
                   {...register("sellerEmail")}
                   id="sellerEmail"
                   type="email"
@@ -115,19 +119,7 @@ const Addatoy = () => {
                   className="w-full h-9 ps-3 rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
                 />
               </div>
-              {/* <div className="col-span-full sm:col-span-3">
-                <label htmlFor="email" className="text-sm">
-                  Gender
-                </label>
-                <select
-                  {...register("gender")}
-                  className="h-9 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
-                >
-                  <option value="female">female</option>
-                  <option value="male">male</option>
-                  <option value="other">other</option>
-                </select>
-              </div> */}
+
               <div className="col-span-full">
                 <label htmlFor="photoURL" className="text-sm">
                   Photo URL

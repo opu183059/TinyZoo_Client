@@ -4,7 +4,7 @@ import { getAuth, updateProfile } from "firebase/auth";
 import { Link } from "react-router-dom";
 
 const Register = () => {
-  const { registerUser, logOut, user } = useContext(Authcontext);
+  const { registerUser, signOuthandle, user } = useContext(Authcontext);
 
   const [errormgs, setErrormgs] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -59,7 +59,7 @@ const Register = () => {
             });
           console.log(loggedUser);
           form.reset();
-          logOut()
+          signOuthandle()
             .then(() => {})
             .catch((error) => {
               console.log(error);

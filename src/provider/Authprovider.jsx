@@ -18,7 +18,7 @@ const Authprovider = ({ children }) => {
   const registerUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
-  const logOut = () => {
+  const signOuthandle = () => {
     return signOut(auth);
   };
   const logIn = (email, password) => {
@@ -36,7 +36,7 @@ const Authprovider = ({ children }) => {
     };
   }, []);
 
-  const authinfo = { registerUser, logOut, logIn, user, loading };
+  const authinfo = { registerUser, signOuthandle, logIn, user, loading };
   return (
     <Authcontext.Provider value={authinfo}>{children}</Authcontext.Provider>
   );

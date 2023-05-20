@@ -8,21 +8,14 @@ const Availabletoy = () => {
     setActive(name);
   };
 
-  // useEffect(() => {
-  //   fetch("http://localhost:5000/allToy")
-  //     .then((res) => res.json())
-  //     .then((result) => {
-  //       setHomeToys(result);
-  //       // console.log(result);
-  //     });
-  // }, []);
-
   useEffect(() => {
-    fetch(`http://localhost:5000/allToy/${active}`)
+    fetch(`https://tinyzoo-server.vercel.app/allToy/${active}`)
       .then((res) => res.json())
       .then((result) => {
-        setHomeToys(result);
+        let jobSliced = result.slice(0, 6);
+        setHomeToys(jobSliced);
         // console.log(result);
+        // console.log(jobSliced);
       });
   }, [active]);
 
@@ -42,7 +35,7 @@ const Availabletoy = () => {
             active == " " ? "tab-active font-semibold" : " "
           }`}
         >
-          All
+          New
         </div>
         <div
           onClick={() => handleTabClick("cats")}
@@ -70,7 +63,7 @@ const Availabletoy = () => {
         </div>
       </div>
       {/* category end  */}
-      <div className="category w-10/12 mx-auto">
+      <div className="category w-10/12 mx-auto mt-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {homeToys?.map((hometoy) => (
             <Hometoycard hometoy={hometoy} key={hometoy._id}></Hometoycard>

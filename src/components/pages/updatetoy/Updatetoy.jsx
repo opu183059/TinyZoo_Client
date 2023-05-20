@@ -1,11 +1,14 @@
 import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import CreatableSelect from "react-select/creatable";
 import Swal from "sweetalert2";
+import { Authcontext } from "../../../provider/Authprovider";
 
 const Updatetoy = () => {
+  const { user } = useContext(Authcontext);
+  console.log(user);
   const toys = useLoaderData();
   const {
     sellerName,
@@ -30,14 +33,14 @@ const Updatetoy = () => {
   } = useForm();
   const onSubmit = (data) => {
     data.subCategory = selectedOption;
-    fetch(`http://localhost:5000/toyupdate/${_id}`, {
+    fetch(`https://tinyzoo-server.vercel.app/toyupdate/${_id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
         if (result.modifiedCount > 0) {
           Swal.fire({
             icon: "success",
@@ -46,7 +49,7 @@ const Updatetoy = () => {
           });
         }
       });
-    console.log(data);
+    // console.log(data);
   };
 
   const options = [

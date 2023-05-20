@@ -1,8 +1,20 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { Authcontext } from "../../provider/Authprovider";
 
 const Header = () => {
   const [navbar, setNavbar] = useState(false);
+  const { user, signOuthandle } = useContext(Authcontext);
+
+  // console.log(user, signOuthandle);
+
+  const handleSignOut = () => {
+    signOuthandle()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <nav className="w-full bg-slate-50 z-50">
@@ -10,11 +22,14 @@ const Header = () => {
         <div>
           <div className="flex items-center justify-between py-2 md:py-5 md:block">
             <div className="logo w-14 h-12">
-              <Link to="/">
+              <Link to="/" className="flex items-center gap-2">
                 <img
                   src="https://i.ibb.co/hghyqpM/TinyZoo3.png"
                   alt="TinyZoo"
                 />
+                <h1 className="text-lg font-extrabold">
+                  Tiny<span className="font-xl font-extrabold">Zoo</span>
+                </h1>
               </Link>
             </div>
 
@@ -62,7 +77,7 @@ const Header = () => {
               navbar ? "block" : "hidden"
             }`}
           >
-            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 font-bold">
+            <ul className="items-center justify-center space-y-5 md:flex md:space-x-4 md:space-y-0 font-bold">
               <li className="">
                 <NavLink
                   className={({ isActive }) =>
@@ -83,26 +98,44 @@ const Header = () => {
                   All toy
                 </NavLink>
               </li>
-              <li className="">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? " text-indigo-700" : " "
-                  }
-                  to="/mytoy"
-                >
-                  My toy
-                </NavLink>
-              </li>
-              <li className="">
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive ? " text-indigo-700" : " "
-                  }
-                  to="/addatoy"
-                >
-                  Add a toy
-                </NavLink>
-              </li>
+              <>
+                {user ? (
+                  <>
+                    <li>
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive ? " text-indigo-700" : " "
+                        }
+                        to="/addatoy"
+                      >
+                        Add a toy
+                      </NavLink>
+                    </li>
+                    <li className="">
+                      <NavLink
+                        className={({ isActive }) =>
+                          isActive ? " text-indigo-700" : " "
+                        }
+                        to="/mytoy"
+                      >
+                        My toy
+                      </NavLink>
+                    </li>
+                  </>
+                ) : (
+                  <li>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive ? " text-indigo-700" : " "
+                      }
+                      to="/register"
+                    >
+                      Register
+                    </NavLink>
+                  </li>
+                )}
+              </>
+
               <li className="">
                 <NavLink
                   className={({ isActive }) =>
@@ -116,23 +149,74 @@ const Header = () => {
             </ul>
 
             <div className="mt-3 space-y-2 lg:hidden md:inline-block">
-              <Link
-                to="/login"
-                className="inline-block w-full px-4 py-2 text-center text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-l"
-              >
-                Login
-              </Link>
-              <Link
-                to="/registr"
-                className="inline-block w-full px-4 py-2 text-center text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-l"
-              >
-                Sign up
-              </Link>
+              {user ? (
+                <>
+                  <button className="flex items-center">
+                    {user.photoURL ? (
+                      <div className="avatar">
+                        <div className="w-10 rounded-full">
+                          <img src={user.photoURL} />
+                        </div>
+                      </div>
+                    ) : (
+                      <img
+                        className="w-10 rounded-full mx-2"
+                        src="https://i.ibb.co/JHVvZ07/am-a-19-year-old-multimedia-artist-student-from-manila-21.png"
+                      />
+                    )}
+                  </button>
+                  <button
+                    className="px-4 py-2 text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-l"
+                    onClick={handleSignOut}
+                  >
+                    Log Out
+                  </button>
+                </>
+              ) : (
+                <button className="px-4 py-2 text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-l">
+                  <Link to="/login">Log in</Link>
+                </button>
+              )}
             </div>
           </div>
         </div>
         <div className="hidden space-x-2 md:inline-block">
-          <Link
+          {user ? (
+            <div className="flex flex-col md:text-center md:flex-row items-center">
+              <div
+                className="tooltip tooltip-bottom"
+                data-tip={user.displayName}
+              >
+                <button className="flex items-center">
+                  {user.photoURL ? (
+                    <div className="avatar">
+                      <div className="w-10 rounded-full">
+                        <img src={user.photoURL} />
+                      </div>
+                    </div>
+                  ) : (
+                    <img
+                      className="w-10 rounded-full mx-2"
+                      src="https://i.ibb.co/JHVvZ07/am-a-19-year-old-multimedia-artist-student-from-manila-21.png"
+                    />
+                  )}
+                </button>
+              </div>
+              <button
+                className="px-4 py-2 ml-4 text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-l"
+                onClick={handleSignOut}
+              >
+                Log Out
+              </button>
+            </div>
+          ) : (
+            <span>
+              <button className="px-4 py-2 text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-l">
+                <Link to="/login">Log in</Link>
+              </button>
+            </span>
+          )}
+          {/* <Link
             to="/login"
             className="px-4 py-2 text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-l"
           >
@@ -143,7 +227,7 @@ const Header = () => {
             className="px-4 py-2 text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-l"
           >
             Sign up
-          </Link>
+          </Link> */}
         </div>
       </div>
     </nav>

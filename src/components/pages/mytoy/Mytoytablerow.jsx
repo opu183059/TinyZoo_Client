@@ -18,7 +18,7 @@ const Mytoytablerow = ({ mytoy }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/toydelete/${id}`, {
+        fetch(`https://tinyzoo-server.vercel.app/toydelete/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

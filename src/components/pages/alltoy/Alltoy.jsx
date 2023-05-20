@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import Singletoyrow from "./Singletoyrow";
+import { useNavigation } from "react-router-dom";
 
 const Alltoy = () => {
   const [toys, setToys] = useState();
   const [search, setSearch] = useState();
   const [noDataMessage, setNoDataMessage] = useState("");
+
+  const navigation = useNavigation();
+  console.log(navigation.state);
+
   useEffect(() => {
-    fetch("http://localhost:5000/allToy")
+    fetch("https://tinyzoo-server.vercel.app/allToy")
       .then((res) => res.json())
       .then((result) => {
         setToys(result);
@@ -19,7 +24,7 @@ const Alltoy = () => {
       });
   }, []);
   const handleSearch = () => {
-    fetch(`http://localhost:5000/toysearch/${search}`)
+    fetch(`https://tinyzoo-server.vercel.app/toysearch/${search}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);
