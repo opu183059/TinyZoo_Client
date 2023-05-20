@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { Authcontext } from "../../provider/Authprovider";
+import Swal from "sweetalert2";
 
 const Privateroute = ({ children }) => {
   const location = useLocation();
@@ -17,6 +18,13 @@ const Privateroute = ({ children }) => {
   }
   if (user) {
     return children;
+  }
+  if (!user) {
+    Swal.fire({
+      icon: "warning",
+      title: "Oops...",
+      text: "You have to login to view details",
+    });
   }
   return <Navigate state={{ from: location }} to="/login"></Navigate>;
 };

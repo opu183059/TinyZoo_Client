@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Viewtoy = () => {
   const toys = useLoaderData();
@@ -12,6 +13,14 @@ const Viewtoy = () => {
     Price,
     Available,
   } = toys || {};
+
+  const added = () => {
+    Swal.fire({
+      icon: "success",
+      title: "Success",
+      text: "Added to cart",
+    });
+  };
 
   return (
     <div>
@@ -101,7 +110,10 @@ const Viewtoy = () => {
                     <span className="title-font font-medium text-2xl text-gray-900">
                       {Price} tk
                     </span>
-                    <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
+                    <button
+                      onClick={added}
+                      className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+                    >
                       Add to cart
                     </button>
                   </div>

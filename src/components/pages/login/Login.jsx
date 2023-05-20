@@ -7,7 +7,6 @@ const Login = () => {
   const [errorMgs, setErrorMgs] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-  // console.log(location);
   const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
@@ -22,9 +21,6 @@ const Login = () => {
         const loggedInUser = result.user;
         // console.log(loggedInUser);
         form.reset();
-        // navigate(from);
-        // console.log(from);
-        // navigate("/");
       })
       .catch((error) => {
         console.log(error);

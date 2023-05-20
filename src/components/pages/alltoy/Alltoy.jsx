@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import Singletoyrow from "./Singletoyrow";
-import { useNavigation } from "react-router-dom";
+// import { useNavigation } from "react-router-dom";
 import { Authcontext } from "../../../provider/Authprovider";
 
 const Alltoy = () => {
@@ -9,7 +9,7 @@ const Alltoy = () => {
   const [noDataMessage, setNoDataMessage] = useState("");
   const { loading } = useContext(Authcontext);
 
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
   // console.log(navigation.state);
 
   useEffect(() => {
@@ -42,13 +42,28 @@ const Alltoy = () => {
   return (
     <div className="w-10/12 mx-auto my-10">
       <div className="overflow-x-auto">
-        <div className="search-box p-2 text-center">
+        <div className="search-box p-2 mb-3 flex items-center justify-center">
           <input
             onChange={(e) => setSearch(e.target.value)}
             type="text"
             className="h-9 ps-3 border-2 border-indigo-950 rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
           />
-          <button onClick={handleSearch}>Search</button>
+          <button onClick={handleSearch} className="">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-10 h-10 hover:text-amber-800"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15.75 15.75l-2.489-2.489m0 0a3.375 3.375 0 10-4.773-4.773 3.375 3.375 0 004.774 4.774zM21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </button>
         </div>
         <table className="table table-compact w-full shadow-lg">
           <thead>

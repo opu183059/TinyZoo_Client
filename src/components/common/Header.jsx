@@ -1,16 +1,19 @@
 import { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Authcontext } from "../../provider/Authprovider";
 
 const Header = () => {
   const [navbar, setNavbar] = useState(false);
   const { user, signOuthandle } = useContext(Authcontext);
+  const navigate = useNavigate();
 
   // console.log(user, signOuthandle);
 
   const handleSignOut = () => {
     signOuthandle()
-      .then(() => {})
+      .then(() => {
+        navigate("/");
+      })
       .catch((error) => {
         console.log(error);
       });
