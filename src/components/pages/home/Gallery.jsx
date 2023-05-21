@@ -11,7 +11,7 @@ const Gallery = () => {
         Joyful Toy{" "}
         <span className="text-3xl ml-2 text-amber-800">Showcase</span>
       </h1>
-      <div className="grid gap-4 over">
+      <div className="grid gap-4 over mb-6">
         <div className="grid lg:grid-cols-2 gap-4">
           <div data-aos="fade-right" data-aos-duration="1000">
             <img
@@ -32,20 +32,6 @@ const Gallery = () => {
           <div data-aos="zoom-in-right" data-aos-duration="1000">
             <img
               className="h-auto max-w-full rounded-lg transition hover:shadow-lg"
-              src="https://i.ibb.co/m9kHBxK/g7.jpg"
-              alt=""
-            />
-          </div>
-          <div data-aos="fade-up" data-aos-duration="1000">
-            <img
-              className="h-auto max-w-full rounded-lg transition hover:shadow-lg"
-              src="https://i.ibb.co/SJf9bNb/g5-1.jpg"
-              alt=""
-            />
-          </div>
-          <div data-aos="flip-up" data-aos-duration="1000">
-            <img
-              className="h-auto max-w-full rounded-lg transition hover:shadow-lg"
               src="https://i.ibb.co/crpwV9m/g4-1.jpg"
               alt=""
             />
@@ -53,7 +39,21 @@ const Gallery = () => {
           <div data-aos="fade-up" data-aos-duration="1000">
             <img
               className="h-auto max-w-full rounded-lg transition hover:shadow-lg"
-              src="https://i.ibb.co/L63dqCw/g6-1.jpg"
+              src="https://i.ibb.co/Jv8bpQ3/newg2.jpg"
+              alt=""
+            />
+          </div>
+          <div data-aos="flip-up" data-aos-duration="1000">
+            <img
+              className="h-auto max-w-full rounded-lg transition hover:shadow-lg"
+              src="https://i.ibb.co/m9kHBxK/g7.jpg"
+              alt=""
+            />
+          </div>
+          <div data-aos="fade-up" data-aos-duration="1000">
+            <img
+              className="h-auto max-w-full rounded-lg transition hover:shadow-lg"
+              src="https://i.ibb.co/M6zj6Dt/newg1.jpg"
               alt=""
             />
           </div>
