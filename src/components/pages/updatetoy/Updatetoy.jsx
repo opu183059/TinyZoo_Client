@@ -9,7 +9,7 @@ import Pagetitle from "../../common/Pagetitle";
 
 const Updatetoy = () => {
   const { user } = useContext(Authcontext);
-  console.log(user);
+  // console.log(user);
   const toys = useLoaderData();
   const {
     sellerName,

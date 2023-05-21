@@ -105,7 +105,7 @@ const Viewtoy = () => {
                     </div>
                     <div>
                       <p>delivery date</p>
-                      <input type="date" value="2023-05-30" />
+                      <input type="date" defaultValue="2023-05-30" />
                     </div>
                   </div>
                   <div className="flex">

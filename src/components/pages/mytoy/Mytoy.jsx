@@ -7,6 +7,8 @@ const Mytoy = () => {
   const { user, loading } = useContext(Authcontext);
   const [myToys, setmyToys] = useState();
   const [noDataMessage, setNoDataMessage] = useState("");
+  // const [sorted, setsorted] = useState();
+  const [toggle, setToggle] = useState(true);
 
   useEffect(() => {
     fetch(`https://tinyzoo-server.vercel.app/mytoy/${user?.email}`)
@@ -21,15 +23,34 @@ const Mytoy = () => {
       });
   }, []);
 
-  // let newdata = myToys;
-  // console.log("Before", newdata);
-  // newdata?.sort((a, b) => parseInt(b.Price) - parseInt(a.Price));
-  // console.log(newdata);
+  if (toggle) {
+    let newdata = myToys;
+    newdata?.sort((a, b) => parseInt(b.Price) - parseInt(a.Price));
+  } else {
+    let newdata = myToys;
+    newdata?.sort((a, b) => parseInt(a.Price) - parseInt(b.Price));
+  }
 
   return (
     <div className="w-10/12 mx-auto pt-24 mb-10">
       <Pagetitle title="ToyZoo | MyToy"></Pagetitle>
       <div className="overflow-x-auto">
+        <div className="price mb-2 text-base flex items-center justify-end">
+          <p className="mr-2 font-bold md:text-lg">Price:</p>
+          <select
+            id="dropdown"
+            onChange={() => setToggle(!toggle)}
+            className="border rounded p-0 md:p-1"
+          >
+            <option value="High to Low" className="text-sm">
+              High to Low
+            </option>
+            <option value="Low to High" className="text-sm">
+              Low to High
+            </option>
+          </select>
+        </div>
+
         <table className="table table-compact w-full shadow-lg">
           <thead>
             <tr>
