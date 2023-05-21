@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 // eslint-disable-next-line react/prop-types
-const Mytoytablerow = ({ mytoy }) => {
+const Mytoytablerow = ({ mytoy, setmyToys, myToys }) => {
   const { sellerName, toyname, subCategory, Price, Available, _id } =
     mytoy || {};
 
@@ -27,6 +27,8 @@ const Mytoytablerow = ({ mytoy }) => {
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
             }
+            const restData = myToys.filter((t) => t._id !== _id);
+            setmyToys(restData);
           });
       }
     });
@@ -41,11 +43,17 @@ const Mytoytablerow = ({ mytoy }) => {
         <td>{subCategory?.[0]?.value}</td>
         <td>{Price}</td>
         <td>{Available}</td>
-        <td>
+        <td className="space-x-1">
+          <Link to={`toyDetails/${_id}`}>
+            <button className="btn btn-ghost btn-xs">details</button>
+          </Link>
           <Link to={`updatetoy/${_id}`}>
             <button className="btn btn-ghost btn-xs">Edit</button>
           </Link>
-          <button onClick={() => dlt(_id)} className="btn btn-ghost btn-xs">
+          <button
+            onClick={() => dlt(_id)}
+            className="btn bg-red-500 border-0 text-white btn-xs"
+          >
             Delete
           </button>
         </td>

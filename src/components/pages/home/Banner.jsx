@@ -1,23 +1,29 @@
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 const Banner = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <div>
-      <div className="hero min-h-screen bg-[url('https://i.ibb.co/PhHd1Rt/banerfinal.jpg')] bg-cover bg-fixed">
+      <div className="hero h-screen bg-[url('https://i.ibb.co/9wzjqyP/barrett-ward-1q-Qx3-LHa-YGg-unsplash.jpg')] bg-auto md:bg-cover">
         <div className="hero-content flex-col lg:flex-row-reverse w-10/12 mx-auto">
-          {/* <img
-            src="https://i.ibb.co/YhPm11D/banner.jpg"
-            className="rounded-lg shadow-2xl"
-          /> */}
           <div className="lg:w-1/2 w-0"></div>
-          <div className="text-center md:text-left lg:w-1/2 w-full">
-            <div className="flex">
-              <div className="hidden md:block items-center justify-center w-16 h-16 p-1 rounded-full dark:bg-white">
+          <div
+            className="text-center md:text-left lg:w-1/2 w-full"
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+          >
+            <div className="flex items-center">
+              <div className="hidden md:block items-center justify-center w-16 h-16 p-1 shadow-md shadow-amber-900 rounded-full dark:bg-white">
                 <img src="https://i.ibb.co/hghyqpM/TinyZoo3.png" alt="" />
               </div>
-              <h1 className="text-7xl ms-3 text-indigo-100 font-akaya drop-shadow-[0_35px_35px_rgba(255, 255, 255)]">
+              <h1 className="text-7xl ms-3 text-amber-700 font-akaya drop-shadow-[0_35px_35px_rgba(255, 255, 255)]">
                 TinyZoo
               </h1>
             </div>
-            <p className="py-6 text-indigo-100">
+            <p className="py-6 text-amber-900 font-medium">
               Discover a world of adorable toy animals at our online store. From
               cuddly cows to playful cats and majestic lions, we offer a wide
               selection of high-quality companions. Let your imagination roam

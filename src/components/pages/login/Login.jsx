@@ -1,23 +1,25 @@
 import { useContext, useEffect, useState } from "react";
 import { Authcontext } from "../../../provider/Authprovider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Pagetitle from "../../common/Pagetitle";
 
 const Login = () => {
   const { logIn, signWithGoogle, user } = useContext(Authcontext);
-  const [errorMgs, setErrorMgs] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
     event.preventDefault();
-    setErrorMgs("");
+    setErrorMessage("");
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     // console.log(email, password);
     logIn(email, password)
       .then((result) => {
+        // eslint-disable-next-line no-unused-vars
         const loggedInUser = result.user;
         // console.log(loggedInUser);
         form.reset();
@@ -25,7 +27,7 @@ const Login = () => {
       .catch((error) => {
         console.log(error);
         let errrormessage = error.code.split("auth/")[1];
-        setErrorMgs(errrormessage);
+        setErrorMessage(errrormessage);
       });
   };
   const googleLogin = () => {
@@ -47,7 +49,8 @@ const Login = () => {
   }, [user]);
 
   return (
-    <div>
+    <div className="pt-20">
+      <Pagetitle title="ToyZoo | Login"></Pagetitle>
       <div className="w-9/12 md:w-7/12 lg:w-6/12 mx-auto my-10">
         <div className="md:w-10/12 mx-auto w-full p-8 space-y-3 rounded-xl dark:bg-indigo-950 dark:text-gray-100">
           <h1 className="text-2xl font-bold text-center">Login</h1>
@@ -91,11 +94,11 @@ const Login = () => {
                 </label>
               </div>
             </div>
-            <button className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-blue-400">
+            <button className="block w-full rounded-md p-3 text-center dark:text-white dark:bg-amber-700">
               Log in
             </button>
             <div className="errorMessage">
-              <p className="text-red-500">{errorMgs}</p>
+              <p className="text-red-500">{errorMessage}</p>
             </div>
           </form>
           <div className="flex items-center pt-4 space-x-1">
@@ -126,9 +129,9 @@ const Login = () => {
             Dont have an account?
             <Link
               to={"/register"}
-              className="text-sm font-semibold underline dark:text-gray-100"
+              className="text-sm ml-1 hover:text-blue-500 font-semibold underline dark:text-gray-100"
             >
-              Sign up
+              Register here
             </Link>
           </p>
         </div>

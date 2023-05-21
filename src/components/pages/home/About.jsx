@@ -1,37 +1,33 @@
 const About = () => {
   return (
-    <div>
-      <article className="max-w-2xl px-6 py-24 mx-auto space-y-12">
+    <div className="hero min-h-screen bg-[url('https://i.ibb.co/qgnvztR/cntbnr.jpg')] bg-cover">
+      <article className="max-w-4xl p-6 lg:p-9 mx-auto space-y-12 backdrop-blur-sm border border-2">
         <div className="w-full mx-auto space-y-4 text-center">
-          <p className="text-xs font-semibold tracking-wider uppercase">
-            About us
-          </p>
-          <h1 className="text-4xl font-bold leading-tight md:text-5xl">
-            Unlock the magic of playtime with TinyZoo.
+          <h1 className="text-4xl text-slate-200 font-bold leading-tight md:text-5xl">
+            Unlock the magic of Playtime with
+            <span className="text-amber-400 ml-2">TinyZoo</span>.
           </h1>
-          <p className="text-sm">
+          <p className="text-sm text-slate-300">
             by
             <a
               rel="noopener noreferrer"
               href="#"
               target="_blank"
-              className="underline dark:text-blue-400"
+              className="underline text-amber-500 hover:text-blue-500 mx-1"
             >
               <span itemProp="name">Akther uz zaman</span>
             </a>
-            on
-            <time dateTime="2021-02-12 15:34:18-0200">May 18th 2023</time>
+            established on May 18th 2023
           </p>
         </div>
-        <div className="pt-12 border-t dark:border-gray-700">
-          <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
+        <div className="pt-10 border-t dark:border-slate-400">
+          <div className="flex items-center flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
             <div className="shadow-xl self-center flex-shrink-0 w-28 h-28 rounded-full md:justify-self-start p-3 flex items-center justify-center  dark:bg-white">
               <img src="https://i.ibb.co/hghyqpM/TinyZoo3.png" alt="" />
             </div>
 
-            <div className="flex flex-col">
-              <h4 className="text-lg font-semibold">Tiny Zoo</h4>
-              <p className="dark:text-gray-400">
+            <div className="flex flex-col text-center md:text-left">
+              <p className="dark:text-gray-300">
                 TinyZoo is your go-to place for an enchanting assortment of toy
                 animals. Explore our collection of majestic unicorns, fierce
                 tigers, and regal lions. With a focus on safety and quality, we
@@ -46,7 +42,7 @@ const About = () => {
               rel="noopener noreferrer"
               href="#"
               aria-label="GitHub"
-              className="p-2 rounded-md  hover:dark:text-blue-400"
+              className="p-2 rounded-md text-amber-500 hover:dark:text-blue-400"
             >
               <svg
                 viewBox="0 0 496 512"
@@ -60,7 +56,7 @@ const About = () => {
               rel="noopener noreferrer"
               href="#"
               aria-label="Dribble"
-              className="p-2 rounded-md  hover:dark:text-blue-400"
+              className="p-2 rounded-md text-amber-500 hover:dark:text-blue-400"
             >
               <svg
                 viewBox="0 0 512 512"
@@ -74,7 +70,7 @@ const About = () => {
               rel="noopener noreferrer"
               href="#"
               aria-label="Twitter"
-              className="p-2 rounded-md  hover:dark:text-blue-400"
+              className="p-2 rounded-md text-amber-500 hover:dark:text-blue-400"
             >
               <svg
                 viewBox="0 0 512 512"
@@ -88,7 +84,7 @@ const About = () => {
               rel="noopener noreferrer"
               href="#"
               aria-label="Email"
-              className="p-2 rounded-md  hover:dark:text-blue-400"
+              className="p-2 rounded-md text-amber-500 hover:dark:text-blue-400"
             >
               <svg
                 viewBox="0 0 512 512"

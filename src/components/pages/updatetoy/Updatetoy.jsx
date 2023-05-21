@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import CreatableSelect from "react-select/creatable";
 import Swal from "sweetalert2";
 import { Authcontext } from "../../../provider/Authprovider";
+import Pagetitle from "../../common/Pagetitle";
 
 const Updatetoy = () => {
   const { user } = useContext(Authcontext);
@@ -64,7 +65,8 @@ const Updatetoy = () => {
   ];
 
   return (
-    <div>
+    <div className="pt-20">
+      <Pagetitle title="ToyZoo | UpdateToy"></Pagetitle>
       <section className="p-6 dark:text-gray-50">
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -75,8 +77,9 @@ const Updatetoy = () => {
           <fieldset className=" w-10/12 md:8/12 lg:7/12 mx-auto p-6 rounded-md shadow-sm dark:bg-gray-900">
             {errors.exampleRequired && <span>This field is required</span>}
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
-              <div className="col-span-full">
-                <h1>Update Toy: {toyname}</h1>
+              <div className="col-span-full flex">
+                <h1 className="font-medium text-lg underline">Updating Toy:</h1>
+                <h1 className="font-medium text-lg ml-2">{toyname}</h1>
               </div>
               <div className="col-span-full sm:col-span-3">
                 <label htmlFor="firstname" className="text-sm">
@@ -112,6 +115,7 @@ const Updatetoy = () => {
                   Seller Name
                 </label>
                 <input
+                  readOnly
                   defaultValue={sellerName}
                   {...register("sellerName")}
                   id="sellerName"
@@ -120,11 +124,13 @@ const Updatetoy = () => {
                   className="w-full h-9 ps-3 rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
                 />
               </div>
+
               <div className="col-span-full sm:col-span-3">
                 <label htmlFor="sellerEmail" className="text-sm">
                   Seller Email
                 </label>
                 <input
+                  readOnly
                   defaultValue={sellerEmail}
                   {...register("sellerEmail")}
                   id="sellerEmail"
@@ -133,19 +139,13 @@ const Updatetoy = () => {
                   className="w-full h-9 ps-3 rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
                 />
               </div>
-              {/* <div className="col-span-full sm:col-span-3">
-                <label htmlFor="email" className="text-sm">
-                  Gender
-                </label>
-                <select
-                  {...register("gender")}
-                  className="h-9 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
-                >
-                  <option value="female">female</option>
-                  <option value="male">male</option>
-                  <option value="other">other</option>
-                </select>
-              </div> */}
+              <div className="col-span-full -mt-3 text-sm">
+                <p>
+                  <span className="text-yellow-400">Note:</span> Can not update
+                  seller name and email, it will be as same as your seller
+                  profile
+                </p>
+              </div>
               <div className="col-span-full">
                 <label htmlFor="photoURL" className="text-sm">
                   Photo URL
@@ -214,10 +214,21 @@ const Updatetoy = () => {
                 />
               </div>
             </div>
+            <div className="w-full text-right mt-3">
+              <input
+                type="submit"
+                className="btn bg-amber-600 border-0 text-white"
+                value="update"
+              />
+            </div>
           </fieldset>
-          <div className="w-full text-center">
-            <input type="submit" className="btn btn-primary" value="update" />
-          </div>
+          {/* <div className="w-full text-center">
+            <input
+              type="submit"
+              className="btn bg-amber-600 border-0 text-white -mt-4"
+              value="update"
+            />
+          </div> */}
         </form>
       </section>
     </div>

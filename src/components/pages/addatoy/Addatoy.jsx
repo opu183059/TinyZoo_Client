@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import CreatableSelect from "react-select/creatable";
 import Swal from "sweetalert2";
 import { Authcontext } from "../../../provider/Authprovider";
+import Pagetitle from "../../common/Pagetitle";
 
 const Addatoy = () => {
   const { user } = useContext(Authcontext);
@@ -27,8 +28,8 @@ const Addatoy = () => {
         if (result.insertedId) {
           Swal.fire({
             icon: "success",
-            title: "Success",
-            text: "Data added successfully",
+            title: "Toy added",
+            text: "PLease fill the form again to add more toys",
           });
         }
       });
@@ -47,7 +48,8 @@ const Addatoy = () => {
   ];
 
   return (
-    <div>
+    <div className="pt-20">
+      <Pagetitle title="ToyZoo | AddToy"></Pagetitle>
       <section className="p-6 dark:text-gray-50">
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -58,10 +60,13 @@ const Addatoy = () => {
           <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
             {errors.exampleRequired && <span>This field is required</span>}
             <div className="space-y-2 col-span-full lg:col-span-1">
-              <p className="font-medium">Toy information</p>
-              <p className="text-xs">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Adipisci fuga autem eum!
+              <p className="font-medium text-lg underline">Toy information</p>
+              <p className="text-sm">
+                Please add the information about your toy. Try to give details
+                description to make your toy attractive.
+              </p>
+              <p className="text-sm">
+                Note: You cannot change <br /> your name and email.
               </p>
             </div>
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
@@ -74,7 +79,7 @@ const Addatoy = () => {
                   {...register("toyname")}
                   id="toyname"
                   type="text"
-                  placeholder="Toy name"
+                  placeholder="Toy Name"
                   className="h-9 ps-3 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
                 />
               </div>
@@ -96,7 +101,7 @@ const Addatoy = () => {
                   Seller Name
                 </label>
                 <input
-                  required
+                  readOnly
                   defaultValue={user?.displayName}
                   {...register("sellerName")}
                   id="sellerName"
@@ -110,7 +115,7 @@ const Addatoy = () => {
                   Seller Email
                 </label>
                 <input
-                  required
+                  readOnly
                   defaultValue={user?.email}
                   {...register("sellerEmail")}
                   id="sellerEmail"
@@ -119,16 +124,22 @@ const Addatoy = () => {
                   className="w-full h-9 ps-3 rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
                 />
               </div>
-
+              <div className="col-span-full -mt-3 text-sm">
+                <p>
+                  <span className="text-yellow-400">Note:</span> Seller name and
+                  email will be as your seller profile
+                </p>
+              </div>
               <div className="col-span-full">
                 <label htmlFor="photoURL" className="text-sm">
                   Photo URL
                 </label>
                 <input
                   required
+                  {...register("photoURL")}
                   id="photoURL"
                   type="text"
-                  placeholder=""
+                  placeholder="Give Photo URL"
                   className="h-9 ps-3 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
                 />
               </div>
@@ -141,8 +152,8 @@ const Addatoy = () => {
                   required
                   {...register("Price")}
                   id="Price"
-                  type="text"
-                  placeholder=""
+                  type="number"
+                  placeholder="Price"
                   className="h-9 ps-3 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
                 />
               </div>
@@ -155,7 +166,7 @@ const Addatoy = () => {
                   {...register("Rating")}
                   id="Rating"
                   type="text"
-                  placeholder=""
+                  placeholder="Ratings"
                   className="h-9 ps-3 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
                 />
               </div>
@@ -167,8 +178,8 @@ const Addatoy = () => {
                   required
                   {...register("Available")}
                   id="Available"
-                  type="text"
-                  placeholder=""
+                  type="number"
+                  placeholder="Total Available"
                   className="h-9 ps-3 w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
                 />
               </div>
@@ -182,15 +193,21 @@ const Addatoy = () => {
                   {...register("description")}
                   id="description"
                   type="text"
-                  placeholder="description"
+                  placeholder="Description"
                   className="textarea w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-400 dark:border-gray-700 dark:text-gray-900"
+                />
+              </div>
+              <div className="col-span-full w-full text-right mt-3">
+                <input
+                  type="submit"
+                  className="btn bg-amber-600 border-0 text-white"
                 />
               </div>
             </div>
           </fieldset>
-          <div className="w-full text-center">
+          {/* <div className="w-full text-center">
             <input type="submit" className="btn btn-primary" />
-          </div>
+          </div> */}
         </form>
       </section>
     </div>

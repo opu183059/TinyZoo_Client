@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import Singletoyrow from "./Singletoyrow";
 // import { useNavigation } from "react-router-dom";
 import { Authcontext } from "../../../provider/Authprovider";
+import Pagetitle from "../../common/Pagetitle";
 
 const Alltoy = () => {
   const [toys, setToys] = useState();
@@ -40,7 +41,8 @@ const Alltoy = () => {
   };
 
   return (
-    <div className="w-10/12 mx-auto my-10">
+    <div className="w-10/12 mx-auto pt-20 mb-10">
+      <Pagetitle title="ToyZoo | AllToy"></Pagetitle>
       <div className="overflow-x-auto">
         <div className="search-box p-2 mb-3 flex items-center justify-center">
           <input

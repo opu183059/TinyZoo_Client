@@ -1,15 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import Mytoytablerow from "./Mytoytablerow";
 import { Authcontext } from "../../../provider/Authprovider";
-import { useNavigation } from "react-router-dom";
+import Pagetitle from "../../common/Pagetitle";
 
 const Mytoy = () => {
   const { user, loading } = useContext(Authcontext);
-  // console.log(user.email);
-  const navigation = useNavigation();
-  console.log(navigation.state);
   const [myToys, setmyToys] = useState();
   const [noDataMessage, setNoDataMessage] = useState("");
+
   useEffect(() => {
     fetch(`https://tinyzoo-server.vercel.app/mytoy/${user?.email}`)
       .then((res) => res.json())
@@ -23,10 +21,16 @@ const Mytoy = () => {
       });
   }, []);
 
+  // let newdata = myToys;
+  // console.log("Before", newdata);
+  // newdata?.sort((a, b) => parseInt(b.Price) - parseInt(a.Price));
+  // console.log(newdata);
+
   return (
-    <div className="w-10/12 mx-auto my-10">
+    <div className="w-10/12 mx-auto pt-24 mb-10">
+      <Pagetitle title="ToyZoo | MyToy"></Pagetitle>
       <div className="overflow-x-auto">
-        <table className="table table-compact w-full">
+        <table className="table table-compact w-full shadow-lg">
           <thead>
             <tr>
               <th></th>
@@ -40,7 +44,12 @@ const Mytoy = () => {
           </thead>
           <tbody>
             {myToys?.map((mytoy) => (
-              <Mytoytablerow mytoy={mytoy} key={mytoy._id}></Mytoytablerow>
+              <Mytoytablerow
+                mytoy={mytoy}
+                key={mytoy._id}
+                myToys={myToys}
+                setmyToys={setmyToys}
+              ></Mytoytablerow>
             ))}
           </tbody>
         </table>

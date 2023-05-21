@@ -15,6 +15,7 @@ import Updatetoy from "./components/pages/updatetoy/Updatetoy.jsx";
 import Viewtoy from "./components/pages/viewtoy/Viewtoy.jsx";
 import Authprovider from "./provider/Authprovider.jsx";
 import Privateroute from "./components/privateroute/Privateroute.jsx";
+import Terms from "./components/pages/termsandcondition/Terms.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,11 @@ const router = createBrowserRouter([
       },
       {
         path: "mytoy",
-        element: <Mytoy></Mytoy>,
+        element: (
+          <Privateroute>
+            <Mytoy></Mytoy>
+          </Privateroute>
+        ),
       },
       {
         path: "mytoy/updatetoy/:id",
@@ -51,8 +56,22 @@ const router = createBrowserRouter([
           fetch(`https://tinyzoo-server.vercel.app/toyupdate/${params.id}`),
       },
       {
+        path: "mytoy/toyDetails/:id",
+        element: (
+          <Privateroute>
+            <Viewtoy></Viewtoy>
+          </Privateroute>
+        ),
+        loader: ({ params }) =>
+          fetch(`https://tinyzoo-server.vercel.app/toyupdate/${params.id}`),
+      },
+      {
         path: "addatoy",
-        element: <Addatoy></Addatoy>,
+        element: (
+          <Privateroute>
+            <Addatoy></Addatoy>
+          </Privateroute>
+        ),
       },
       {
         path: "blog",
@@ -65,6 +84,10 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>,
+      },
+      {
+        path: "terms",
+        element: <Terms></Terms>,
       },
     ],
   },

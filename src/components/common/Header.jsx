@@ -20,18 +20,18 @@ const Header = () => {
   };
 
   return (
-    <nav className="w-full bg-slate-50 z-50">
+    <nav className="w-full bg-slate-50 z-50 shadow-md fixed top-0">
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
-          <div className="flex items-center justify-between py-2 md:py-5 md:block">
-            <div className="logo w-14 h-12">
+          <div className="flex items-center justify-between py-2 md:py-3 md:block">
+            <div className="logo w-9 h-12">
               <Link to="/" className="flex items-center gap-2">
                 <img
-                  src="https://i.ibb.co/hghyqpM/TinyZoo3.png"
+                  src="https://i.ibb.co/M7xrkvG/TinyZoo5.png"
                   alt="TinyZoo"
                 />
-                <h1 className="text-lg font-extrabold">
-                  Tiny<span className="font-xl font-extrabold">Zoo</span>
+                <h1 className="text-2xl -ml-2 font-akaya font font-extrabold ">
+                  Tiny<span className="text-3xl text-amber-700">Zoo</span>
                 </h1>
               </Link>
             </div>
@@ -80,11 +80,11 @@ const Header = () => {
               navbar ? "block" : "hidden"
             }`}
           >
-            <ul className="items-center justify-center space-y-5 md:flex md:space-x-4 md:space-y-0 font-bold">
+            <ul className="items-center text-xl font-akaya justify-center space-y-5 md:flex md:space-x-4 md:space-y-0 font-bold">
               <li className="">
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? " text-indigo-700" : " "
+                    isActive ? " text-amber-800" : " "
                   }
                   to="/"
                 >
@@ -94,7 +94,7 @@ const Header = () => {
               <li className="">
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? " text-indigo-700" : " "
+                    isActive ? " text-amber-800" : " "
                   }
                   to="/alltoy"
                 >
@@ -107,7 +107,7 @@ const Header = () => {
                     <li>
                       <NavLink
                         className={({ isActive }) =>
-                          isActive ? " text-indigo-700" : " "
+                          isActive ? " text-amber-800" : " "
                         }
                         to="/addatoy"
                       >
@@ -117,7 +117,7 @@ const Header = () => {
                     <li className="">
                       <NavLink
                         className={({ isActive }) =>
-                          isActive ? " text-indigo-700" : " "
+                          isActive ? " text-amber-800" : " "
                         }
                         to="/mytoy"
                       >
@@ -129,7 +129,7 @@ const Header = () => {
                   <li>
                     <NavLink
                       className={({ isActive }) =>
-                        isActive ? " text-indigo-700" : " "
+                        isActive ? " text-amber-800" : " "
                       }
                       to="/register"
                     >
@@ -142,7 +142,7 @@ const Header = () => {
               <li className="">
                 <NavLink
                   className={({ isActive }) =>
-                    isActive ? " text-indigo-700" : " "
+                    isActive ? " text-amber-800" : " "
                   }
                   to="/blog"
                 >
@@ -169,14 +169,14 @@ const Header = () => {
                     )}
                   </button>
                   <button
-                    className="px-4 py-2 text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-l"
+                    className="px-4 py-2 text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-amber-600 to-amber-800 hover:bg-gradient-to-l"
                     onClick={handleSignOut}
                   >
                     Log Out
                   </button>
                 </>
               ) : (
-                <button className="px-4 py-2 text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-l">
+                <button className="px-4 py-2 text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-amber-600 to-amber-800 hover:bg-gradient-to-l">
                   <Link to="/login">Log in</Link>
                 </button>
               )}
@@ -206,7 +206,7 @@ const Header = () => {
                 </button>
               </div>
               <button
-                className="px-4 py-2 ml-4 text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-l"
+                className="px-4 py-2 ml-4 text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-amber-600 to-amber-800 hover:bg-gradient-to-l"
                 onClick={handleSignOut}
               >
                 Log Out
@@ -214,7 +214,7 @@ const Header = () => {
             </div>
           ) : (
             <span>
-              <button className="px-4 py-2 text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-indigo-600 to-indigo-500 hover:bg-gradient-to-l">
+              <button className="px-4 py-2 text-white transition duration-200 rounded-md shadow-md bg-gradient-to-r from-amber-600 to-amber-800 hover:bg-gradient-to-l">
                 <Link to="/login">Log in</Link>
               </button>
             </span>

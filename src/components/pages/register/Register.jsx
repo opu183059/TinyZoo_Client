@@ -2,20 +2,22 @@ import { useContext, useState } from "react";
 import { Authcontext } from "../../../provider/Authprovider";
 import { getAuth, updateProfile } from "firebase/auth";
 import { Link } from "react-router-dom";
+import Pagetitle from "../../common/Pagetitle";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { registerUser, signOuthandle, user } = useContext(Authcontext);
 
-  const [errormgs, setErrormgs] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [havemgs, setHavemgs] = useState("Already have an account?");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successfull, setSuccessfull] = useState("");
+  const [haveMessage, setHaveMessage] = useState("Already have an account?");
   // console.log(createUser);
   const auth = getAuth();
 
-  const handleRegister = (event) => {
+  const handleRegistration = (event) => {
     event.preventDefault();
-    setErrormgs("");
-    setSuccessMessage("");
+    setErrorMessage("");
+    setSuccessfull("");
     const form = event.target;
     const name = form.name.value;
     const photo = form.photo.value;
@@ -24,31 +26,56 @@ const Register = () => {
     console.log(name, photo, email, password);
 
     if (!name) {
-      setErrormgs("Name field cannot be empty");
+      Swal.fire({
+        icon: "error",
+        title: "Name Missing",
+        text: "Please give a User Name",
+      });
       return;
     }
     if (!email) {
-      setErrormgs("Email field cannot be empty");
+      Swal.fire({
+        icon: "error",
+        title: "Email ID missing",
+        text: "Please give a valid email id",
+      });
       return;
     }
     if (!password) {
-      setErrormgs("Password field cannot be empty");
+      Swal.fire({
+        icon: "error",
+        title: "Password Missing",
+        text: "PLease set the passwords",
+      });
+      return;
+    }
+    if (password.length < 8) {
+      Swal.fire({
+        icon: "error",
+        title: "Week Password",
+        text: "Password should be minimum 8 character",
+      });
       return;
     }
     if (!photo) {
-      setErrormgs("Photo field cannot be empty");
-      return;
-    }
-    if (password.length < 6) {
-      setErrormgs("Password must be at least 6 characters");
+      Swal.fire({
+        icon: "error",
+        title: "Photo Missing",
+        text: "PLease give the photo URL",
+      });
       return;
     }
     if ((email, password)) {
       registerUser(email, password)
         .then((result) => {
           const loggedUser = result.user;
-          setSuccessMessage("Account created successfully goto Login");
-          setHavemgs("Click here to");
+          setSuccessfull("Account created successfully goto Login");
+          Swal.fire({
+            icon: "success",
+            title: "Congratulations",
+            text: "Account Created Successfully goto login",
+          });
+          setHaveMessage("Click here to");
           updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photo,
@@ -67,23 +94,21 @@ const Register = () => {
         })
         .catch((error) => {
           let errrormessage = error.code.split("auth/")[1];
-          setErrormgs(errrormessage);
+          setErrorMessage(errrormessage);
           console.log(error);
         });
     }
   };
 
   return (
-    <div>
+    <div className="pt-20">
+      <Pagetitle title="ToyZoo | Register"></Pagetitle>
       <div className="w-9/12 md:w-7/12 lg:w-6/12 mx-auto my-10">
         <div className="md:w-10/12 mx-auto w-full p-8 space-y-3 rounded-xl dark:bg-indigo-950 dark:text-gray-100">
           <h1 className="text-2xl font-bold text-center">Registration</h1>
-          <div className="errorMessage">
-            <p className="text-red-500 text-center">{errormgs}</p>
-            <p className="text-green-700 text-center">{successMessage}</p>
-          </div>
+
           <form
-            onSubmit={handleRegister}
+            onSubmit={handleRegistration}
             noValidate=""
             action=""
             className="space-y-6 ng-untouched ng-pristine ng-valid"
@@ -95,7 +120,6 @@ const Register = () => {
                 id="name"
                 className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
-                required
               />
               <label
                 htmlFor="name"
@@ -111,7 +135,6 @@ const Register = () => {
                 id="email"
                 className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
-                required
               />
               <label
                 htmlFor="email"
@@ -128,7 +151,6 @@ const Register = () => {
                   id="password"
                   className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
-                  required
                 />
                 <label
                   htmlFor="password"
@@ -144,7 +166,6 @@ const Register = () => {
                   id="photo"
                   className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
-                  required
                 />
                 <label
                   htmlFor="photo"
@@ -155,14 +176,18 @@ const Register = () => {
               </div>
               <div className="flex justify-end text-xs dark:text-gray-400"></div>
             </div>
-            <button className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-blue-400">
+            <button className="block w-full p-3 text-center rounded-md dark:text-white dark:bg-amber-700">
               Register
             </button>
           </form>
+          <div className="errorMessage">
+            <p className="text-red-500 text-center">{errorMessage}</p>
+            <p className="text-green-700 text-center">{successfull}</p>
+          </div>
           <div>
             {user ? (
               <p className="text-xs text-center sm:px-6 dark:text-gray-400">
-                {havemgs}{" "}
+                {haveMessage}{" "}
                 <Link
                   to="/login"
                   className=" text-sm font-semibold underline dark:text-gray-100"
@@ -172,7 +197,7 @@ const Register = () => {
               </p>
             ) : (
               <p className="text-xs text-center sm:px-6 dark:text-gray-400">
-                {havemgs}{" "}
+                {haveMessage}{" "}
                 <Link
                   to="/login"
                   className=" text-sm font-semibold underline dark:text-gray-100"

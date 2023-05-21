@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
     <div>
@@ -59,10 +61,8 @@ const Footer = () => {
                     Privacy
                   </a>
                 </li>
-                <li>
-                  <a rel="noopener noreferrer" href="#">
-                    Terms of Service
-                  </a>
+                <li className="hover:underline hover:text-blue-500">
+                  <Link to={"terms"}>Terms and Condition</Link>
                 </li>
               </ul>
             </div>

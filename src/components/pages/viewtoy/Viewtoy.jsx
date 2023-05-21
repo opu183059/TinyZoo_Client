@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import Pagetitle from "../../common/Pagetitle";
 
 const Viewtoy = () => {
   const toys = useLoaderData();
@@ -24,6 +25,7 @@ const Viewtoy = () => {
 
   return (
     <div>
+      <Pagetitle title="ToyZoo | ToyDetails"></Pagetitle>
       <div>
         {/* <!-- component --> */}
         <section className="text-gray-700 body-font overflow-hidden bg-white">
@@ -31,7 +33,7 @@ const Viewtoy = () => {
             <div className="lg:w-4/5 mx-auto flex justify-between">
               <div className="w-auto p-3 flex items-center justify-center bg-white rounded-lg hover:shadow-xl ">
                 <img
-                  alt="ecommerce"
+                  alt={toyname}
                   className="w-full max-w-sm lg:max-h-96 rounded-lg "
                   src={photoURL}
                 />
