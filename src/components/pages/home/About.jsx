@@ -1,11 +1,11 @@
 const About = () => {
   return (
-    <div className="hero min-h-screen bg-[url('https://i.ibb.co/qgnvztR/cntbnr.jpg')] bg-cover">
-      <article className="max-w-4xl p-6 lg:p-9 mx-auto space-y-12 backdrop-blur-sm border border-2">
+    <div className="hero min-h-screen bg-[url('https://i.ibb.co/qgnvztR/cntbnr.jpg')] bg-cover bg-fixed">
+      <article className="max-w-4xl p-6 lg:p-9 mx-auto space-y-12 backdrop-blur-sm border-2">
         <div className="w-full mx-auto space-y-4 text-center">
           <h1 className="text-4xl text-slate-200 font-bold leading-tight md:text-5xl">
             Unlock the magic of Playtime with
-            <span className="text-amber-400 ml-2">TinyZoo</span>.
+            <span className="text-amber-400 ml-2 font-akaya">TinyZoo</span>.
           </h1>
           <p className="text-sm text-slate-300">
             by
@@ -27,7 +27,7 @@ const About = () => {
             </div>
 
             <div className="flex flex-col text-center md:text-left">
-              <p className="dark:text-gray-300">
+              <p className="text-slate-100">
                 TinyZoo is your go-to place for an enchanting assortment of toy
                 animals. Explore our collection of majestic unicorns, fierce
                 tigers, and regal lions. With a focus on safety and quality, we
